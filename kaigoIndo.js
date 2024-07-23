@@ -24,9 +24,6 @@ window.onload = function() {
     // Jenis kelamin (isi cowo atau cewe)
     var Gender = "cowo";
     
-    // No HP untuk pembayaran
-    var noHP = "081899998888";
-    
     // Login page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Login") > -1) {
         document.querySelector('input[name="id_number"]').value = user;
@@ -87,6 +84,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
     var Tahun1 = "2024";
     var Bulan1 = "08";
     var Tanggal1 = [1, 2, 3, 4, 5];
+    // No HP untuk pembayaran
+    var noHP = "081899998888";
     
     // Discount page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Discount") > -1) {
