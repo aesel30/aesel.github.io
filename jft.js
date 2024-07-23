@@ -13,20 +13,19 @@ window.onload = function() {
     "use strict";
     
     // ID dan Password
-    var user = "JP2026449";
-    var sandi = "Rama230294";
+    var user = "JP";
+    var sandi = "";
     
     // Tanggal lahir
-    var Tahun = "1994";
-    var Bulan = "02";
-    var Tanggal = "23";
+    var Tahun = "";
+    var Bulan = "";
+    var Tanggal = "";
     
     // Jenis kelamin (isi cowo atau cewe)
     var Gender = "cowo";
     
     // No HP untuk pembayaran
     var noHP = "081899998888";
-    var autobayar = "yes"; //yes or no
     
     // Login page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Login") > -1) {
@@ -35,15 +34,19 @@ window.onload = function() {
         document.querySelector('input[name="captchaCode"]').style.textTransform = "uppercase";
     }
     
-    // Attention page
-    else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Attention") > -1) {
-        document.querySelector('input[onclick="agree(\'ExamSelect\')"]').click();
+    // Private page
+    else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/PrivateChk") > -1) {
+        document.querySelector('input[type="button"][name="Continue"]').click();
     }
-    
     // Policy page
     else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Policy") > -1) {
         document.querySelector('input[name="chkPL"][value="1"]').checked = true;
         document.querySelector('input[name="yes"]').click();
+    }
+
+    // Attention page
+    else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Attention") > -1) {
+        document.querySelector('input[onclick="agree(\'ExamSelect\')"]').click();
     }
     
     // ExamSelect page
@@ -75,14 +78,8 @@ window.onload = function() {
         document.querySelector('input[name="chkTextbook"][value="D"]').checked = true;
         document.querySelector('input[name="chkWebSite"][value="A"]').checked = true;
         document.querySelector('option[value="A"]').selected = true;
-    }
-    
-    // Confirm page
-    else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Confirm") > -1) {
-        document.querySelector('input[name="tel_1"]').value = noHP;
-        if (autobayar === "yes") {
-            document.querySelector('input[name="next"]').click();
-        }
+        document.querySelector('input[type="button"][name="Next"][id="Next"]').click();
+        document.querySelector('input[type="button"][name="Next"][id="Next"]').click();
     }
 };
 
@@ -93,13 +90,17 @@ window.addEventListener("DOMContentLoaded", (e) => {
     var Tahun1 = "2024";
     var Bulan1 = "08";
     var Tanggal1 = [1, 2, 3, 4, 5];
-    var autosearch = "yes"; //yes or no
-    var wakturefresh = "1e3"; // 1  =  1 detik
     
     // Discount page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Discount") > -1) {
         document.querySelector('input[value="zotapay"]').checked = true;
         document.querySelector('input[name="Next"]').click();
+    }
+
+    // Confirm page
+    else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Confirm") > -1) {
+        document.querySelector('input[name="tel_1"]').value = noHP;
+        document.querySelector('input[name="next"]').click();
     }
     
     // SelectPlace page
@@ -108,9 +109,9 @@ window.addEventListener("DOMContentLoaded", (e) => {
         e.sort(() => Math.random() - 0.5);
         document.querySelector('input[name="exam_day_y"]').value = Tahun1;
         document.querySelector('input[name="exam_day_m"]').value = Bulan1;
+        document.querySelector('input[type=text][name=placeName]').value = "Indonesia";
         e.forEach(e => {
             document.querySelector('input[name="exam_day_d"]').value = e;
-            document.querySelector('option[value="IDN"]').selected = true;
         });
     }
     
@@ -120,16 +121,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
         e.sort(() => Math.random() - 0.5);
         document.querySelector('input[name="exam_day_y"]').value = Tahun1;
         document.querySelector('input[name="exam_day_m"]').value = Bulan1;
+        document.querySelector('input[type=text][name=placeName]').value = "Indonesia";
         e.forEach(e => {
             document.querySelector('input[name="exam_day_d"]').value = e;
         });
-        document.querySelector('option[value="IDN"]').selected = true;
     }
-    
-    // Auto search
-    if (autosearch === "yes") {
-        setTimeout(() => {
+
+    setTimeout(() => {
             document.querySelector('input[name="search"]').click();
-        }, parseInt(wakturefresh));
-    }
+        }, 800);
 });
