@@ -9,15 +9,6 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
-    "use strict";
-
-    // Cek apakah URL sudah pernah dibuka
-    if (!localStorage.getItem('openedOnce')) {
-        window.location.href = 'https://j6.prometric-jp.com/Reserve/Login?CN=JL&LC=EN';
-        localStorage.setItem('openedOnce', 'true');
-    }
-
     // Variabel untuk login
     var user = "";
     var sandi = "";
