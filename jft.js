@@ -13,36 +13,38 @@
     "use strict";
 
     // Variabel untuk login
-    var user = "";
-    var sandi = "";
+    const user = "JP2026449";
+    const sandi = "Rama230294";
 
     // Variabel untuk informasi pribadi
     // cewe = perempuan, cowo = laki-laki
-    var Tahun = "";
-    var Bulan = "";
-    var Tanggal = "";
-    var Gender = "cewe";
+    const Tahun = "1996";
+    const Bulan = "02";
+    const Tanggal = "23";
+    const Gender = "cowo";
 
     // Variabel untuk pembayaran
-    var noHP = "089899997777";
-    var autobayar = "yes";
+    const noHP = "08985152070";
+    const autobayar = "yes";
 
-    if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Login") > -1) {
+    const url = document.location.href;
+
+    if (url.includes("https://j6.prometric-jp.com/Reserve/Login")) {
         document.querySelector('input[name="id_number"]').value = user;
         document.querySelector('input[name="password"]').value = sandi;
         document.querySelector('input[name="captchaCode"]').style.textTransform = "uppercase";
-    } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Attention") > -1) {
+    } else if (url.includes("https://j6.prometric-jp.com/Reserve/Attention")) {
         document.querySelector('input[onclick="agree(\'ExamSelect\')"]').click();
-    } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Policy") > -1) {
+    } else if (url.includes("https://j6.prometric-jp.com/Reserve/Policy")) {
         document.querySelector('input[name="chkPL"][value="1"]').checked = true;
         document.querySelector('input[name="yes"]').click();
-    } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/ExamSelect") > -1) {
+    } else if (url.includes("https://j6.prometric-jp.com/Reserve/ExamSelect")) {
         document.querySelector('option[value="F10-E10J"]').selected = true;
         document.querySelector('input[name="test"]').click();
-    } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Status") > -1) {
-        document.querySelectorAll('select[name="selBYear"] option[value="' + Tahun + '"]').forEach((e) => e.selected = true);
-        document.querySelectorAll('select[name="selBMonth"] option[value="' + Bulan + '"]').forEach((e) => e.selected = true);
-        document.querySelectorAll('select[name="selBDay"] option[value="' + Tanggal + '"]').forEach((e) => e.selected = true);
+    } else if (url.includes("https://j6.prometric-jp.com/Reserve/Status")) {
+        document.querySelector('select[name="selBYear"]').value = Tahun;
+        document.querySelector('select[name="selBMonth"]').value = Bulan;
+        document.querySelector('select[name="selBDay"]').value = Tanggal;
         if (Gender === "cewe") {
             document.querySelector('input[name="rdoGender"][value="1"]').checked = true;
         } else if (Gender === "cowo") {
@@ -59,7 +61,7 @@
         document.querySelector('input[name="chkTextbook"][value="D"]').checked = true;
         document.querySelector('input[name="chkWebSite"][value="A"]').checked = true;
         document.querySelector('option[value="A"]').selected = true;
-    } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Confirm") > -1) {
+    } else if (url.includes("https://j6.prometric-jp.com/Reserve/Confirm")) {
         document.querySelector('input[name="tel_1"]').value = noHP;
         if (autobayar === "yes") {
             document.querySelector('input[name="next"]').click();
@@ -67,19 +69,17 @@
     }
 
     window.addEventListener("DOMContentLoaded", (e) => {
-        "use strict";
-
         // Variabel untuk auto search
-        var Tahun1 = "2024";
-        var Bulan1 = "07";
-        var Tanggal1 = [29, 30, 31];
-        var autosearch = "yes";
-        var wakturefresh = 1000;
+        const Tahun1 = "2024";
+        const Bulan1 = "07";
+        const Tanggal1 = [29, 30, 31];
+        const autosearch = "yes";
+        const wakturefresh = 1000;
 
-        if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Discount") > -1) {
+        if (url.includes("https://j6.prometric-jp.com/Reserve/Discount")) {
             document.querySelector('input[value="zotapay"]').checked = true;
             document.querySelector('input[name="Next"]').click();
-        } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/SelectPlace") > -1) {
+        } else if (url.includes("https://j6.prometric-jp.com/Reserve/SelectPlace")) {
             Tanggal1.sort(() => Math.random() - 0.5);
             document.querySelector('input[name="exam_day_y"]').value = Tahun1;
             document.querySelector('input[name="exam_day_m"]').value = Bulan1;
@@ -87,7 +87,7 @@
                 document.querySelector('input[name="exam_day_d"]').value = e;
                 document.querySelector('input[type=text][name=placeName]').value = "Indonesia";
             });
-        } else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/SelectPlace#result") > -1) {
+        } else if (url.includes("https://j6.prometric-jp.com/Reserve/SelectPlace#result")) {
             Tanggal1.sort(() => Math.random() - 0.5);
             document.querySelector('input[name="exam_day_y"]').value = Tahun1;
             document.querySelector('input[name="exam_day_m"]').value = Bulan1;
