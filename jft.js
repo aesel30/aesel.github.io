@@ -13,19 +13,16 @@ window.onload = function() {
     "use strict";
     
     // ID dan Password
-    var user = "JP";
-    var sandi = "";
+    const user = "JP";
+    const sandi = "";
     
     // Tanggal lahir
-    var Tahun = "";
-    var Bulan = "";
-    var Tanggal = "";
+    const Tahun = "";
+    const Bulan = "";
+    const Tanggal = "";
     
     // Jenis kelamin (isi cowo atau cewe)
-    var Gender = "cowo";
-    
-    // No HP untuk pembayaran
-    var noHP = "081899998888";
+    const Gender = "cowo";
     
     // Login page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Login") > -1) {
@@ -92,6 +89,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
         {"month": "08", "days": ['01','02','03','05','06','07','08']},
         {"month": "07", "days": ['29','30','31']}
     ];
+    // No HP untuk pembayaran
+    const noHP = "08985152070";
     
     // Discount page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Discount") > -1) {
