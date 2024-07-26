@@ -13,16 +13,16 @@ window.onload = function() {
     "use strict";
     
     // ID dan Password
-    var user = "JP";
-    var sandi = "";
+    const user = "JP";
+    const sandi = "";
     
     // Tanggal lahir
-    var Tahun = "";
-    var Bulan = "";
-    var Tanggal = "";
+    const Tahun = "";
+    const Bulan = "";
+    const Tanggal = "";
     
     // Jenis kelamin (isi cowo atau cewe)
-    var Gender = "cowo";
+    const Gender = "cowo";
     
     // Login page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Login") > -1) {
@@ -81,11 +81,13 @@ window.addEventListener("DOMContentLoaded", (e) => {
     "use strict";
     
     // Auto search (tambah "," untuk memisahkan tgl contoh 12,19,20)
-    var Tahun1 = "2024";
-    var Bulan1 = "08";
-    var Tanggal1 = [1, 2, 3, 4, 5];
+    const Tahun1 = "2024";
+    const days_month_list = [
+        {"month": "08", "days": ['01','02','03','05','06','07','08']},
+        {"month": "07", "days": ['29','30','31']}
+    ];
     // No HP untuk pembayaran
-    var noHP = "081899998888";
+    const noHP = "08985152070";
     
     // Discount page
     if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/Discount") > -1) {
@@ -101,29 +103,33 @@ window.addEventListener("DOMContentLoaded", (e) => {
     
     // SelectPlace page
     else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/SelectPlace") > -1) {
-        const e = Tanggal1;
-        e.sort(() => Math.random() - 0.5);
+        const pilihBulan = days_month_list[Math.floor(Math.random() * days_month_list.length)];
+        const pBulan = pilihBulan.month;
+        let pTanggal = pilihBulan.days.slice();
+        pTanggal.sort(() => Math.random() - 0.5);
         document.querySelector('input[name="exam_day_y"]').value = Tahun1;
-        document.querySelector('input[name="exam_day_m"]').value = Bulan1;
+        document.querySelector('input[name="exam_day_m"]').value = pBulan;
         document.querySelector('input[type=text][name=placeName]').value = "Indonesia";
-        e.forEach(e => {
+        pTanggal.forEach(e => {
             document.querySelector('input[name="exam_day_d"]').value = e;
         });
     }
     
     // SelectPlace result page
     else if (document.location.href.indexOf("https://j6.prometric-jp.com/Reserve/SelectPlace#result") > -1) {
-        const e = Tanggal1;
-        e.sort(() => Math.random() - 0.5);
+        const pilihBulan = days_month_list[Math.floor(Math.random() * days_month_list.length)];
+        const pBulan = pilihBulan.month;
+        let pTanggal = pilihBulan.days.slice();
+        pTanggal.sort(() => Math.random() - 0.5);
         document.querySelector('input[name="exam_day_y"]').value = Tahun1;
-        document.querySelector('input[name="exam_day_m"]').value = Bulan1;
+        document.querySelector('input[name="exam_day_m"]').value = pBulan;
         document.querySelector('input[type=text][name=placeName]').value = "Indonesia";
-        e.forEach(e => {
+        pTanggal.forEach(e => {
             document.querySelector('input[name="exam_day_d"]').value = e;
         });
     }
 
     setTimeout(() => {
             document.querySelector('input[name="search"]').click();
-        }, 800);
+        }, 100);
 });
